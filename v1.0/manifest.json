@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Reddit Anti-Block",
+    "version": "1.0",
+    "description": "Removes the 18+ popup block",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
