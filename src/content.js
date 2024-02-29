@@ -28,6 +28,16 @@ const removeItems = () => {
         body.style = "";
     }
 
+    // Remove blue from presentation div
+    var pres = document.querySelectorAll("div[role='presentation']");
+    pres.forEach(element => {
+        var computedStyle = window.getComputedStyle(element);
+        if (computedStyle.filter.includes('blur')) {
+            element.style.filter = '';
+        }
+    });
+
+
 }
 
 setInterval(removeItems, 2000);
