@@ -16,6 +16,12 @@ const removeItems = () => {
         element.parentNode.removeChild(element);
     });
 
+    // Check for all desktop blocking modals and remove (2)
+    var elements = document.querySelectorAll('[bundlename="nsfw_blocking_modal"]');
+    elements.forEach(function(element) {
+        element.parentNode.removeChild(element);
+    });
+
     // Cont.
     let xpromoElements = document.querySelectorAll('xpromo-nsfw-blocking-modal-desktop');
     xpromoElements.forEach(el => {
