@@ -34,7 +34,7 @@ const removeItems = () => {
         body.style = "";
     }
 
-    // Remove blue from presentation div
+    // Remove blur from presentation div
     var pres = document.querySelectorAll("div[role='presentation']");
     pres.forEach(element => {
         var computedStyle = window.getComputedStyle(element);
@@ -43,6 +43,8 @@ const removeItems = () => {
         }
     });
 
+    // UPDATE - remove blocking modal
+    document.getElementById("blocking-modal").remove();
 
 }
 
