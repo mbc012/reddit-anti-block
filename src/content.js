@@ -10,42 +10,30 @@ const removeItems = () => {
         return;
     }
 
-    // Check for all desktop blocking modals and remove
-    var elements = document.querySelectorAll('[bundlename="desktop_rpl_nsfw_blocking_modal"]');
-    elements.forEach(function(element) {
-        element.parentNode.removeChild(element);
-    });
+    let removeIds = [
+        "blocking-modal",
+        "nsfw-qr-dialog"
+    ];
 
-    // Check for all desktop blocking modals and remove (2)
-    var elements = document.querySelectorAll('[bundlename="nsfw_blocking_modal"]');
-    elements.forEach(function(element) {
-        element.parentNode.removeChild(element);
-    });
+    let removeTags = [
+        "auth-landing-experience-xpromo-cbau-wrapper"
+    ];
 
-    // Cont.
-    let xpromoElements = document.querySelectorAll('xpromo-nsfw-blocking-modal-desktop');
-    xpromoElements.forEach(el => {
-        el.remove();
-    });
-
-    // Remove overflow and pointerEvent restriction from body
-    var body = document.querySelector('body.v2');
-    if (body && body.style.pointerEvents === 'none' && body.style.overflow === 'hidden') {
-        body.style = "";
+    for (let removeId of removeIds) {
+        let element = document.getElementById(removeId);
+        if (element !== null)
+            element.remove();
     }
 
-    // Remove blur from presentation div
-    var pres = document.querySelectorAll("div[role='presentation']");
-    pres.forEach(element => {
-        var computedStyle = window.getComputedStyle(element);
-        if (computedStyle.filter.includes('blur')) {
-            element.style.filter = '';
+    for (let removeTag of removeTags) {
+        let elements = document.getElementsByTagName(removeTag);
+        let elementsArray = Array.from(elements);
+        for (let element of elementsArray) {
+            if (element !== null) {
+                element.remove();
+            }
         }
-    });
-
-    // UPDATE - remove blocking modal
-    document.getElementById("blocking-modal").remove();
-
+    }
 }
 
 setInterval(removeItems, 2000);
